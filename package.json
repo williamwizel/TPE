@@ -1,0 +1,19 @@
+{
+  "name": "tpe",
+  "version": "1.0.0",
+  "description": "Le bouclier antimissile",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/williamwizel/TPE.git"
+  },
+  "author": "William WIZEL",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/williamwizel/TPE/issues"
+  },
+  "homepage": "https://github.com/williamwizel/TPE#readme"
+}
