@@ -3,6 +3,8 @@ import { connect } from 'react-redux'
 import Sky from  "./Sky.jsx"
 import Village from "./Village.jsx"
 import Rocket from "./Rocket.jsx"
+import Shield from './Shield.jsx'
+
 
 
 class Grid extends React.Component {
@@ -12,6 +14,8 @@ class Grid extends React.Component {
         <Sky />
         <Village/>
         <Rocket t={ this.props.t } />
+        <Shield t={ this.props.t } />
+
       </div>
     );
   }
