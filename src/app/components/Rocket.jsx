@@ -1,6 +1,7 @@
 import React from 'react'; // import de ka librairie react
 import { connect } from 'react-redux' // import de la librairie de partage de donné
 
+var img_explosion = require("../../img/explosion.png")
 class Rocket extends React.Component { //Définition de du missile en élément react.js
   constructor(props) { //Première fonction appelée lors de la création du missile
     super(props)
@@ -11,13 +12,20 @@ class Rocket extends React.Component { //Définition de du missile en élément 
       v: 100, // Vitesse du missile
       q : 75,  //sommet de la parabole
       m : 90,   // point d'atterissage
-      r : 0 // orientation du missile en radian
+      r : 0, // orientation du missile en radian,
+      isExplosed: false
     }
   }
   componentWillReceiveProps(nextProps) {
     //récupération de la variable de temps
     var t = parseInt(nextProps.t)
 
+    // On récupère l'état du missile
+    var isExplosed = this.state.isExplosed
+
+    // On vérifie si le missile n'a pas explosé, si oui on arrète l'algo
+    if(isExplosed)
+      return;
 
     //Hauteur maximale du missile
       var m = this.state.m
@@ -54,6 +62,7 @@ class Rocket extends React.Component { //Définition de du missile en élément 
     if(y < 0){
       y=0;
       x= this.state.m
+      isExplosed = true // on déclare le missile comme explosé
     }
 
     // Si le missile depasse la hauteur du plan défini, alors on le met sur sa limite
@@ -61,7 +70,7 @@ class Rocket extends React.Component { //Définition de du missile en élément 
         y=100
 
     // Mise à jour de l'état pour actualisation du rendu
-    this.setState({ x, y, r })
+    this.setState({ x, y, r, isExplosed })
   }
   render () {
     return (
@@ -74,7 +83,17 @@ class Rocket extends React.Component { //Définition de du missile en élément 
         <div style ={{position : 'absolute', bottom : "0px", left : (this.state.m)/2 + "%", height : "100%", borderLeft : "1px dotted #888"}}></div>
 
         { /* Le missile, positionné sur le plan avec son orientation */ }
-        <div style={{ height: "10px", width :"40px", borderRight: "2px solid blue", transform: "rotate("+this.state.r+"rad)", position:"absolute", left: this.state.x+"%", bottom : this.state.y+"%",   backgroundColor:"red"}} />
+        <div style={{ height: "20px", width :"20px", position:"absolute", left: this.state.x+"%", bottom : this.state.y+"%",   backgroundColor:"red"}} />
+
+      { /* Condition d'affichage pour savoir si l'état du missile est explosé => image sinon on indique la cible */ }
+        { this.state.isExplosed ? (
+          <div style={{ height: "60px", width :"80px", marginLeft: "-40px", position:"absolute", left: this.state.m+"%", bottom : "0%", textAlign: "center", color: "red" }}>
+            <img src={ img_explosion } width= "80px" />
+          </div>
+        ) : (
+          <div style={{ height: "20px", width :"50px", marginLeft: "-20px", position:"absolute", left: this.state.m+"%", bottom : "0%", border: "1px dashed #000", textAlign: "center", color: "red" }}>CIBLE</div>
+        ) }
+        
       </div>
     );
   }

@@ -10,12 +10,10 @@ import Shield from './Shield.jsx'
 class Grid extends React.Component {
   render () {
     return (
-      <div style={{ height: "100%", width: "100%", position:'relative'}}>
+      <div style={{ height: "100%", width: "100%", position:'relative', borderBottom: "4px brown solid" }}>
         <Sky />
         <Village/>
         <Rocket t={ this.props.t } />
-        <Shield t={ this.props.t } />
-
       </div>
     );
   }

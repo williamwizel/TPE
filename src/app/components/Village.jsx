@@ -4,8 +4,8 @@ import { connect } from 'react-redux'
 class Village extends React.Component {
   render () {
     return (
-      <div style={{ height: "10%", width: "20%", position:'absolute',bottom:'0px', right:"0px", backgroundColor:"yellow"}}>
-
+      <div style={{ height: "10%", width: "20%", position:'absolute',bottom:'0px', right:"0px", backgroundColor:"orange", textAlign: "center"}}>
+      VILLAGE
       </div>
     );
   }

@@ -35,7 +35,7 @@ class App extends React.Component {
     return (
       <div style={{ height: "100%", width: "100%", position: "relative" }}>
         <Grid t={ this.state.t } />
-        <div style={{ position: "absolute", backgroundColor: "#ccc", top: 0, right: 0, width: "200px", height: "200px" }}>
+        <div style={{ position: "absolute", backgroundColor: "#ccc", top: 0, right: 0, width: "200px", height: "70px", padding: "10px" }}>
           <div>Temps: <input type="text" value={ this.state.t } ref="time" onChange={ () => this.onTimeChange() }/></div>
           <div>
             <button onClick = {()=> this.onPlay()}>play</button>
