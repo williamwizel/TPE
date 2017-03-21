@@ -19,7 +19,7 @@ class Shield extends React.Component {
         <div style={{ height: "5%", width: "10%", position:'absolute',bottom:'0px', right:"0px", backgroundColor:"pink", zIndex:5}}>
 
         </div>
-        <FriendRocket t={ this.props.t } />
+
       </div>
     );
   }
